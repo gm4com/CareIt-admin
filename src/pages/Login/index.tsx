@@ -5,6 +5,8 @@ import CheckIcon from '../../assets/Icons/CheckIcon'
 import EyeIcon from '../../assets/Icons/EyeIcon'
 import LockIcon from '../../assets/Icons/LockIcon'
 import UserOutline from '../../assets/Icons/UserOutline'
+import { useNavigate } from 'react-router'
+import { ROUTES } from '../../routers/routes'
 
 const Login = () => {
   const {
@@ -12,6 +14,7 @@ const Login = () => {
     handleSubmit,
     formState: { errors }
   } = useForm()
+  const navigate = useNavigate()
   const [enabled, setEnabled] = useState(false)
   const [hidePassword, setHidePassword] = useState(false)
   return (
@@ -65,7 +68,12 @@ const Login = () => {
                     </div>
                   </div>
                   <div className='self-stretch h-[84px] flex-col justify-start items-start gap-4 flex'>
-                    <button className='self-stretch px-5 py-3 bg-[#2d87ff] rounded-xl shadow border border-[#2d87ff] justify-center items-center gap-2 inline-flex'>
+                    <button
+                      className='self-stretch px-5 py-3 bg-[#2d87ff] rounded-xl shadow border border-[#2d87ff] justify-center items-center gap-2 inline-flex'
+                      onClick={() => {
+                        navigate(ROUTES.MEMBER_ACCOUNT)
+                      }}
+                    >
                       <div className="text-white text-[15px] font-bold font-['Noto Sans KR'] leading-normal">
                         로그인
                       </div>

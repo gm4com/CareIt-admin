@@ -13,6 +13,8 @@ const BaseLayout: React.FC<BaseLayoutProps> = ({ children }) => {
   useEffect(() => {
     if ([ROUTES.LOGIN].includes(location.pathname)) {
       setIsShowSidebar(false)
+    } else {
+      setIsShowSidebar(true)
     }
   }, [location.pathname])
   return (

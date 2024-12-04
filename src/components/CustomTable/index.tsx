@@ -1,15 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from 'react'
 import ReactPaginate from 'react-paginate'
+import ArrowLeftIcon from '../../assets/Icons/ArrowLeftIcon'
+import ArrowRightIcon from '../../assets/Icons/ArrowRightIcon'
 
 interface TableProps<T> {
   fetchData: (page: number, itemsPerPage: number) => Promise<{ data: T[]; totalItems: number }>
   columns: string[]
   renderRow: (item: T) => React.ReactNode
   itemsPerPage?: number
+  onClickRow?: () => void
 }
 
-const CustomTable = <T,>({ fetchData, columns, renderRow, itemsPerPage = 10 }: TableProps<T>) => {
+const CustomTable = <T,>({ fetchData, columns, renderRow, itemsPerPage = 10, onClickRow }: TableProps<T>) => {
   const [data, setData] = useState<T[]>([])
   const [currentPage, setCurrentPage] = useState(0)
   const [totalItems, setTotalItems] = useState(0)
@@ -43,7 +46,11 @@ const CustomTable = <T,>({ fetchData, columns, renderRow, itemsPerPage = 10 }: T
         </thead>
         <tbody>
           {data.map((item, index) => (
-            <tr key={index} className='dark:text-white border-b border-gray-700 hover:bg-gray-700'>
+            <tr
+              key={index}
+              className='dark:text-white border-b border-gray-700 hover:bg-gray-700'
+              onClick={() => onClickRow && onClickRow()}
+            >
               {renderRow(item)}
             </tr>
           ))}
@@ -53,6 +60,15 @@ const CustomTable = <T,>({ fetchData, columns, renderRow, itemsPerPage = 10 }: T
       {/* Phân trang */}
       {totalPages > 1 && (
         <div className='flex justify-center items-center py-4 text-white'>
+          <div
+            className='min-w-[100px] h-5 justify-start items-center gap-2 inline-flex cursor-pointer'
+            onClick={() => currentPage && setCurrentPage(currentPage - 1)}
+          >
+            <div className='w-5 h-5 relative'>
+              <ArrowLeftIcon />
+            </div>
+            <div className="text-[#efefef] text-sm font-medium font-['Noto Sans KR'] leading-tight">전 페이지</div>
+          </div>
           <ReactPaginate
             previousLabel={null}
             nextLabel={null}
@@ -64,7 +80,17 @@ const CustomTable = <T,>({ fetchData, columns, renderRow, itemsPerPage = 10 }: T
             initialPage={currentPage}
             activeClassName={'bg-gray-700 !text-blue-600'}
             disabledClassName={'text-gray-500 cursor-not-allowed'}
+            key={currentPage}
           />
+          <div
+            className='min-w-[100px] h-5 justify-end items-center gap-2 inline-flex cursor-pointer'
+            onClick={() => setCurrentPage(currentPage + 1)}
+          >
+            <div className="text-[#efefef] text-sm font-medium font-['Noto Sans KR'] leading-tight">다음</div>
+            <div className='w-5 h-5 relative'>
+              <ArrowRightIcon />
+            </div>
+          </div>
         </div>
       )}
     </div>
