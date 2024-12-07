@@ -1,5 +1,3 @@
-import React from 'react'
-
 const CardPrice = () => {
   return (
     <div className='w-[224px] h-fit px-4 py-3 bg-[#cec1fe]/70 rounded-xl border-4 border-white flex-col justify-start items-start gap-2.5 inline-flex'>

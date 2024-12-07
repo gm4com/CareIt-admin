@@ -1,12 +1,12 @@
+import CheckIcon from '@/assets/Icons/CheckIcon'
+import EyeIcon from '@/assets/Icons/EyeIcon'
+import LockIcon from '@/assets/Icons/LockIcon'
+import UserOutline from '@/assets/Icons/UserOutline'
+import { ROUTES } from '@/routers/routes'
 import { Checkbox, Input } from '@headlessui/react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import CheckIcon from '../../assets/Icons/CheckIcon'
-import EyeIcon from '../../assets/Icons/EyeIcon'
-import LockIcon from '../../assets/Icons/LockIcon'
-import UserOutline from '../../assets/Icons/UserOutline'
 import { useNavigate } from 'react-router'
-import { ROUTES } from '../../routers/routes'
 
 const Login = () => {
   const {

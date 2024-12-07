@@ -1,7 +1,7 @@
+import Sidebar from '@/components/Sidebar'
+import { ROUTES } from '@/routers/routes'
 import React, { ReactNode, useEffect, useState } from 'react'
-import Sidebar from '../../components/Sidebar'
 import { useLocation } from 'react-router'
-import { ROUTES } from '../../routers/routes'
 
 interface BaseLayoutProps {
   children: ReactNode

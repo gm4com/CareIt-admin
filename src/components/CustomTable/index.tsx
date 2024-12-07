@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import ArrowLeftIcon from '@/assets/Icons/ArrowLeftIcon';
-import ArrowRightIcon from '@/assets/Icons/ArrowRightIcon';
+import ArrowLeftIcon from '@/assets/Icons/ArrowLeftIcon'
+import ArrowRightIcon from '@/assets/Icons/ArrowRightIcon'
 import React, { useState, useEffect } from 'react'
 import ReactPaginate from 'react-paginate'
+import CustomCheckbox from '../CustomCheckbox'
 
 interface TableProps<T> {
   fetchData: (page: number, itemsPerPage: number) => Promise<{ data: T[]; totalItems: number }>
@@ -10,9 +11,17 @@ interface TableProps<T> {
   renderRow: (item: T) => React.ReactNode
   itemsPerPage?: number
   onClickRow?: () => void
+  isSelectRow?: boolean
 }
 
-const CustomTable = <T,>({ fetchData, columns, renderRow, itemsPerPage = 10, onClickRow }: TableProps<T>) => {
+const CustomTable = <T,>({
+  fetchData,
+  columns,
+  renderRow,
+  itemsPerPage = 10,
+  onClickRow,
+  isSelectRow
+}: TableProps<T>) => {
   const [data, setData] = useState<T[]>([])
   const [currentPage, setCurrentPage] = useState(0)
   const [totalItems, setTotalItems] = useState(0)
@@ -37,6 +46,11 @@ const CustomTable = <T,>({ fetchData, columns, renderRow, itemsPerPage = 10, onC
       <table className='w-full text-sm text-left text-gray-400'>
         <thead className='text-sm uppercase dark:text-white text-white font-bold'>
           <tr>
+            {isSelectRow && (
+              <th>
+                <CustomCheckbox />
+              </th>
+            )}
             {columns.map((col, index) => (
               <th key={index} className='px-6 py-3'>
                 {col}
@@ -48,9 +62,14 @@ const CustomTable = <T,>({ fetchData, columns, renderRow, itemsPerPage = 10, onC
           {data.map((item, index) => (
             <tr
               key={index}
-              className='dark:text-white border-b border-gray-700 hover:bg-gray-700'
+              className='text-[#fcfcfc] border-b border-gray-700 hover:bg-gray-700'
               onClick={() => onClickRow && onClickRow()}
             >
+              {isSelectRow && (
+                <td>
+                  <CustomCheckbox />
+                </td>
+              )}
               {renderRow(item)}
             </tr>
           ))}

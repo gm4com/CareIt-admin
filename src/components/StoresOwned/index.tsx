@@ -1,7 +1,6 @@
-import React from 'react'
+import ArrowLeftIcon from '@/assets/Icons/ArrowLeftIcon'
+import ArrowRightIcon from '@/assets/Icons/ArrowRightIcon'
 import CardPrice from '../CardPrice'
-import ArrowLeftIcon from '../../assets/Icons/ArrowLeftIcon'
-import ArrowRightIcon from '../../assets/Icons/ArrowRightIcon'
 
 const StoresOwned = () => {
   return (

@@ -1,10 +1,11 @@
-import React from 'react'
+import { useSearchParams } from 'react-router'
 import CardPrice from '../CardPrice'
-import ArrowLeftIcon from '../../assets/Icons/ArrowLeftIcon'
-import ArrowRightIcon from '../../assets/Icons/ArrowRightIcon'
-import CheveronIcon from '../../assets/Icons/CheveronIcon'
+import ArrowLeftIcon from '@/assets/Icons/ArrowLeftIcon'
+import ArrowRightIcon from '@/assets/Icons/ArrowRightIcon'
+import CheveronIcon from '@/assets/Icons/CheveronIcon'
 
 const StoreDashboard = () => {
+  const [searchParams, setSearchParams] = useSearchParams()
   return (
     <div className='flex flex-col gap-3'>
       <div className='w-full h-fit p-5 bg-[#1a1d1f] rounded-xl justify-end items-center inline-flex'>
@@ -129,13 +130,16 @@ const StoreDashboard = () => {
               </div>
             </div>
           </div>
-          <div className='self-stretch h-[38px] px-5 py-2 rounded-lg shadow border border-[#2d87ff] justify-center items-center gap-2 inline-flex'>
+          <button
+            className='self-stretch h-[38px] px-5 py-2 rounded-lg shadow border border-[#2d87ff] justify-center items-center gap-2 inline-flex'
+            onClick={() => setSearchParams({ tab: '1' })}
+          >
             <div className='justify-start items-center flex'>
               <div className="text-[#2d87ff] text-[13px] font-bold font-['Noto Sans KR'] leading-[18px]">
                 세부정보 보기
               </div>
             </div>
-          </div>
+          </button>
         </div>
         <div className='w-[368px] h-[487px] p-6 bg-[#1a1d1f] rounded-xl flex-col justify-between items-start inline-flex'>
           <div className='self-stretch h-96 flex-col justify-start items-start gap-4 flex'>
@@ -200,13 +204,16 @@ const StoreDashboard = () => {
               </div>
             </div>
           </div>
-          <div className='self-stretch h-[38px] px-5 py-2 rounded-lg shadow border border-[#2d87ff] justify-center items-center gap-2 inline-flex'>
+          <button
+            className='self-stretch h-[38px] px-5 py-2 rounded-lg shadow border border-[#2d87ff] justify-center items-center gap-2 inline-flex'
+            onClick={() => setSearchParams({ tab: '1' })}
+          >
             <div className='justify-start items-center flex'>
               <div className="text-[#2d87ff] text-[13px] font-bold font-['Noto Sans KR'] leading-[18px]">
                 세부정보 보기
               </div>
             </div>
-          </div>
+          </button>
         </div>
         <div className='w-[368px] h-[487px] p-6 bg-[#1a1d1f] rounded-xl flex-col justify-between items-start inline-flex'>
           <div className='self-stretch h-24 flex-col justify-start items-start gap-4 flex'>
@@ -220,13 +227,16 @@ const StoreDashboard = () => {
               <div className='self-stretch' />
             </div>
           </div>
-          <div className='self-stretch h-[38px] px-5 py-2 rounded-lg shadow border border-[#2d87ff] justify-center items-center gap-2 inline-flex'>
+          <button
+            className='self-stretch h-[38px] px-5 py-2 rounded-lg shadow border border-[#2d87ff] justify-center items-center gap-2 inline-flex'
+            onClick={() => setSearchParams({ tab: '1' })}
+          >
             <div className='justify-start items-center flex'>
               <div className="text-[#2d87ff] text-[13px] font-bold font-['Noto Sans KR'] leading-[18px]">
                 세부정보 보기
               </div>
             </div>
-          </div>
+          </button>
         </div>
       </div>
     </div>

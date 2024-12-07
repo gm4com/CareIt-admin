@@ -1,12 +1,48 @@
-import React from 'react'
-import MaximizeIcon from '../../assets/Icons/MaximizeIcon'
-import UpIcon from '../../assets/Icons/UpIcon'
-import MailIcon from '../../assets/Icons/MailIcon'
-import CoinIcon from '../../assets/Icons/CoinIcon'
-import DownloadIcon from '../../assets/Icons/DownloadIcon'
-import UserTable from '../../pages/User'
+import CoinIcon from '@/assets/Icons/CoinIcon'
+import DownloadIcon from '@/assets/Icons/DownloadIcon'
+import MailIcon from '@/assets/Icons/MailIcon'
+import MaximizeIcon from '@/assets/Icons/MaximizeIcon'
+import UpIcon from '@/assets/Icons/UpIcon'
+import CustomTable from '../CustomTable'
 
 const SettlementByEmployee = () => {
+  const fetchUserData = async (page: number, itemsPerPage: number) => {
+    // Giả lập gọi API
+    const totalItems = 100 // Tổng số bản ghi giả lập
+    const data = Array.from({ length: itemsPerPage }, (_, i) => ({
+      id: page * itemsPerPage + i + 1,
+      name: `Member ${page * itemsPerPage + i + 1}`,
+      email: `Email ${page * itemsPerPage + i + 1}`,
+      address: `Address ${page * itemsPerPage + i + 1}`,
+      phoneNumber: `PhoneNumber ${page * itemsPerPage + i + 1}`
+    }))
+    return { data, totalItems }
+  }
+
+  const renderUserRow = (data: any) => (
+    <>
+      <td className='px-6 py-4'>{data.id}</td>
+      <td className='px-6 py-4'>Lee Kang Min 19일</td>
+      <td className='px-6 py-4'>900만원 / 150명 / 19명 (지명률 8%)</td>
+      <td className='px-6 py-4'>기본급 70만원 / 경력자 수당 19만원 /합계 456만원</td>
+      <td className='px-6 py-4'>30%</td>
+      <td className='px-6 py-4'>70만원</td>
+      <td className='px-6 py-4'>670만원</td>
+      <td className='px-6 py-4'>
+        <div className='flex gap-3 items-center'>
+          <button>
+            <DownloadIcon />
+          </button>
+          <button>
+            <CoinIcon />
+          </button>
+          <button>
+            <MailIcon />
+          </button>
+        </div>
+      </td>
+    </>
+  )
   return (
     <div className='flex flex-col gap-3'>
       <div className='h-fit justify-start items-start gap-3 inline-flex'>
@@ -66,14 +102,22 @@ const SettlementByEmployee = () => {
                         </div>
                       </div>
                       <div className='w-3.5 h-3.5 px-[2.62px] py-[1.75px] justify-center items-center flex'>
-                        <div className='w-[8.75px] h-[10.50px] relative flex-col justify-start items-start flex' />
+                        <div className='w-[8.75px] h-[10.50px] relative flex-col justify-start items-start flex'>
+                          <UpIcon />
+                        </div>
                       </div>
                     </div>
-                    <div className='w-[18px] h-[18px] left-[452px] top-[2px] absolute' />
+                    <div className='w-[18px] h-[18px] left-[452px] top-[2px] absolute'>
+                      <MailIcon />
+                    </div>
                   </div>
                   <div className='justify-start items-center gap-1.5 inline-flex'>
-                    <div className='w-[18px] h-[18px] relative' />
-                    <div className='w-[18px] h-[18px] relative' />
+                    <div className='w-[18px] h-[18px] relative'>
+                      <CoinIcon />
+                    </div>
+                    <div className='w-[18px] h-[18px] relative'>
+                      <DownloadIcon />
+                    </div>
                   </div>
                 </div>
                 <div className='h-[38px] py-2 justify-center items-center gap-1.5 inline-flex'>
@@ -100,14 +144,22 @@ const SettlementByEmployee = () => {
                         </div>
                       </div>
                       <div className='w-3.5 h-3.5 px-[2.62px] py-[1.75px] justify-center items-center flex'>
-                        <div className='w-[8.75px] h-[10.50px] relative flex-col justify-start items-start flex' />
+                        <div className='w-[8.75px] h-[10.50px] relative flex-col justify-start items-start flex'>
+                          <UpIcon />
+                        </div>
                       </div>
                     </div>
-                    <div className='w-[18px] h-[18px] left-[452px] top-[2px] absolute' />
+                    <div className='w-[18px] h-[18px] left-[452px] top-[2px] absolute'>
+                      <MailIcon />
+                    </div>
                   </div>
                   <div className='justify-start items-center gap-1.5 inline-flex'>
-                    <div className='w-[18px] h-[18px] relative' />
-                    <div className='w-[18px] h-[18px] relative' />
+                    <div className='w-[18px] h-[18px] relative'>
+                      <CoinIcon />
+                    </div>
+                    <div className='w-[18px] h-[18px] relative'>
+                      <DownloadIcon />
+                    </div>
                   </div>
                 </div>
                 <div className='h-[38px] py-2 justify-center items-center gap-1.5 inline-flex'>
@@ -134,14 +186,22 @@ const SettlementByEmployee = () => {
                         </div>
                       </div>
                       <div className='w-3.5 h-3.5 px-[2.62px] py-[1.75px] justify-center items-center flex'>
-                        <div className='w-[8.75px] h-[10.50px] relative flex-col justify-start items-start flex' />
+                        <div className='w-[8.75px] h-[10.50px] relative flex-col justify-start items-start flex'>
+                          <UpIcon />
+                        </div>
                       </div>
                     </div>
-                    <div className='w-[18px] h-[18px] left-[452px] top-[2px] absolute' />
+                    <div className='w-[18px] h-[18px] left-[452px] top-[2px] absolute'>
+                      <MailIcon />
+                    </div>
                   </div>
                   <div className='justify-start items-center gap-1.5 inline-flex'>
-                    <div className='w-[18px] h-[18px] relative' />
-                    <div className='w-[18px] h-[18px] relative' />
+                    <div className='w-[18px] h-[18px] relative'>
+                      <CoinIcon />
+                    </div>
+                    <div className='w-[18px] h-[18px] relative'>
+                      <DownloadIcon />
+                    </div>
                   </div>
                 </div>
                 <div className='h-[38px] py-2 justify-center items-center gap-1.5 inline-flex'>
@@ -168,14 +228,22 @@ const SettlementByEmployee = () => {
                         </div>
                       </div>
                       <div className='w-3.5 h-3.5 px-[2.62px] py-[1.75px] justify-center items-center flex'>
-                        <div className='w-[8.75px] h-[10.50px] relative flex-col justify-start items-start flex' />
+                        <div className='w-[8.75px] h-[10.50px] relative flex-col justify-start items-start flex'>
+                          <UpIcon />
+                        </div>
                       </div>
                     </div>
-                    <div className='w-[18px] h-[18px] left-[452px] top-[2px] absolute' />
+                    <div className='w-[18px] h-[18px] left-[452px] top-[2px] absolute'>
+                      <MailIcon />
+                    </div>
                   </div>
                   <div className='justify-start items-center gap-1.5 inline-flex'>
-                    <div className='w-[18px] h-[18px] relative' />
-                    <div className='w-[18px] h-[18px] relative' />
+                    <div className='w-[18px] h-[18px] relative'>
+                      <CoinIcon />
+                    </div>
+                    <div className='w-[18px] h-[18px] relative'>
+                      <DownloadIcon />
+                    </div>
                   </div>
                 </div>
                 <div className='h-[38px] py-2 justify-center items-center gap-1.5 inline-flex'>
@@ -197,17 +265,27 @@ const SettlementByEmployee = () => {
                     </div>
                     <div className='w-[72px] h-[22px] left-[374px] top-0 absolute justify-start items-center gap-1 inline-flex'>
                       <div className='h-[22px] px-1.5 pb-0.5 bg-[#33383f] rounded justify-start items-center gap-2.5 flex'>
-                        <div className="text-[#fcfcfc] text-sm font-normal font-['Noto Sans KR'] leading-tight">5%</div>
+                        <div className="text-[#fcfcfc] text-sm font-normal font-['Noto Sans KR'] leading-tight">
+                          20%
+                        </div>
                       </div>
-                      <div className='w-3.5 h-3.5 px-[2.62px] py-[1.75px] origin-top-left -rotate-180 justify-center items-center flex'>
-                        <div className='w-[8.75px] h-[10.50px] relative flex-col justify-start items-start flex' />
+                      <div className='w-3.5 h-3.5 px-[2.62px] py-[1.75px] justify-center items-center flex'>
+                        <div className='w-[8.75px] h-[10.50px] relative flex-col justify-start items-start flex'>
+                          <UpIcon />
+                        </div>
                       </div>
                     </div>
-                    <div className='w-[18px] h-[18px] left-[452px] top-[2px] absolute' />
+                    <div className='w-[18px] h-[18px] left-[452px] top-[2px] absolute'>
+                      <MailIcon />
+                    </div>
                   </div>
                   <div className='justify-start items-center gap-1.5 inline-flex'>
-                    <div className='w-[18px] h-[18px] relative' />
-                    <div className='w-[18px] h-[18px] relative' />
+                    <div className='w-[18px] h-[18px] relative'>
+                      <CoinIcon />
+                    </div>
+                    <div className='w-[18px] h-[18px] relative'>
+                      <DownloadIcon />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -315,14 +393,22 @@ const SettlementByEmployee = () => {
                         </div>
                       </div>
                       <div className='w-3.5 h-3.5 px-[2.62px] py-[1.75px] justify-center items-center flex'>
-                        <div className='w-[8.75px] h-[10.50px] relative flex-col justify-start items-start flex' />
+                        <div className='w-[8.75px] h-[10.50px] relative flex-col justify-start items-start flex'>
+                          <UpIcon />
+                        </div>
                       </div>
                     </div>
-                    <div className='w-[18px] h-[18px] left-[452px] top-[2px] absolute' />
+                    <div className='w-[18px] h-[18px] left-[452px] top-[2px] absolute'>
+                      <MailIcon />
+                    </div>
                   </div>
                   <div className='justify-start items-center gap-1.5 inline-flex'>
-                    <div className='w-[18px] h-[18px] relative' />
-                    <div className='w-[18px] h-[18px] relative' />
+                    <div className='w-[18px] h-[18px] relative'>
+                      <CoinIcon />
+                    </div>
+                    <div className='w-[18px] h-[18px] relative'>
+                      <DownloadIcon />
+                    </div>
                   </div>
                 </div>
                 <div className='h-[38px] py-2 justify-center items-center gap-1.5 inline-flex'>
@@ -349,14 +435,22 @@ const SettlementByEmployee = () => {
                         </div>
                       </div>
                       <div className='w-3.5 h-3.5 px-[2.62px] py-[1.75px] justify-center items-center flex'>
-                        <div className='w-[8.75px] h-[10.50px] relative flex-col justify-start items-start flex' />
+                        <div className='w-[8.75px] h-[10.50px] relative flex-col justify-start items-start flex'>
+                          <UpIcon />
+                        </div>
                       </div>
                     </div>
-                    <div className='w-[18px] h-[18px] left-[452px] top-[2px] absolute' />
+                    <div className='w-[18px] h-[18px] left-[452px] top-[2px] absolute'>
+                      <MailIcon />
+                    </div>
                   </div>
                   <div className='justify-start items-center gap-1.5 inline-flex'>
-                    <div className='w-[18px] h-[18px] relative' />
-                    <div className='w-[18px] h-[18px] relative' />
+                    <div className='w-[18px] h-[18px] relative'>
+                      <CoinIcon />
+                    </div>
+                    <div className='w-[18px] h-[18px] relative'>
+                      <DownloadIcon />
+                    </div>
                   </div>
                 </div>
                 <div className='h-[38px] py-2 justify-center items-center gap-1.5 inline-flex'>
@@ -383,14 +477,22 @@ const SettlementByEmployee = () => {
                         </div>
                       </div>
                       <div className='w-3.5 h-3.5 px-[2.62px] py-[1.75px] justify-center items-center flex'>
-                        <div className='w-[8.75px] h-[10.50px] relative flex-col justify-start items-start flex' />
+                        <div className='w-[8.75px] h-[10.50px] relative flex-col justify-start items-start flex'>
+                          <UpIcon />
+                        </div>
                       </div>
                     </div>
-                    <div className='w-[18px] h-[18px] left-[452px] top-[2px] absolute' />
+                    <div className='w-[18px] h-[18px] left-[452px] top-[2px] absolute'>
+                      <MailIcon />
+                    </div>
                   </div>
                   <div className='justify-start items-center gap-1.5 inline-flex'>
-                    <div className='w-[18px] h-[18px] relative' />
-                    <div className='w-[18px] h-[18px] relative' />
+                    <div className='w-[18px] h-[18px] relative'>
+                      <CoinIcon />
+                    </div>
+                    <div className='w-[18px] h-[18px] relative'>
+                      <DownloadIcon />
+                    </div>
                   </div>
                 </div>
                 <div className='h-[38px] py-2 justify-center items-center gap-1.5 inline-flex'>
@@ -412,17 +514,27 @@ const SettlementByEmployee = () => {
                     </div>
                     <div className='w-[72px] h-[22px] left-[374px] top-0 absolute justify-start items-center gap-1 inline-flex'>
                       <div className='h-[22px] px-1.5 pb-0.5 bg-[#33383f] rounded justify-start items-center gap-2.5 flex'>
-                        <div className="text-[#fcfcfc] text-sm font-normal font-['Noto Sans KR'] leading-tight">5%</div>
+                        <div className="text-[#fcfcfc] text-sm font-normal font-['Noto Sans KR'] leading-tight">
+                          10%
+                        </div>
                       </div>
-                      <div className='w-3.5 h-3.5 px-[2.62px] py-[1.75px] origin-top-left -rotate-180 justify-center items-center flex'>
-                        <div className='w-[8.75px] h-[10.50px] relative flex-col justify-start items-start flex' />
+                      <div className='w-3.5 h-3.5 px-[2.62px] py-[1.75px] justify-center items-center flex'>
+                        <div className='w-[8.75px] h-[10.50px] relative flex-col justify-start items-start flex'>
+                          <UpIcon />
+                        </div>
                       </div>
                     </div>
-                    <div className='w-[18px] h-[18px] left-[452px] top-[2px] absolute' />
+                    <div className='w-[18px] h-[18px] left-[452px] top-[2px] absolute'>
+                      <MailIcon />
+                    </div>
                   </div>
                   <div className='justify-start items-center gap-1.5 inline-flex'>
-                    <div className='w-[18px] h-[18px] relative' />
-                    <div className='w-[18px] h-[18px] relative' />
+                    <div className='w-[18px] h-[18px] relative'>
+                      <CoinIcon />
+                    </div>
+                    <div className='w-[18px] h-[18px] relative'>
+                      <DownloadIcon />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -453,7 +565,20 @@ const SettlementByEmployee = () => {
           </div>
         </div>
         <div>
-          <UserTable />
+          <CustomTable
+            fetchData={fetchUserData}
+            columns={[
+              'No',
+              '테라피스트 /급여 일',
+              '발생한 매출/관리 수/지명',
+              '기본급',
+              '설정한 인센티브',
+              '인센티브',
+              '지급할 합계',
+              'SMS/엑셀'
+            ]}
+            renderRow={renderUserRow}
+          />
         </div>
       </div>
     </div>

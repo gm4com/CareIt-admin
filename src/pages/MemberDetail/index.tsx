@@ -1,18 +1,30 @@
-import { useState } from 'react'
-import ArrowLeftIcon from '../../assets/Icons/ArrowLeftIcon'
-import SalesByStore from '../../components/SalesByStore'
+import ArrowLeftIcon from '@/assets/Icons/ArrowLeftIcon'
+import SalesByStore from '@/components/SalesByStore'
+import SettlementByEmployee from '@/components/SettlementByEmployee'
+import StoreDashboard from '@/components/StoreDashboard'
+import StoresOwned from '@/components/StoresOwned'
 import clsx from 'clsx'
-import StoreDashboard from '../../components/StoreDashboard'
-import SettlementByEmployee from '../../components/SettlementByEmployee'
-import StoresOwned from '../../components/StoresOwned'
+import { useEffect, useState } from 'react'
+import { useNavigate, useSearchParams } from 'react-router'
 
 const LIST_TAB = ['매장 대쉬보드', ' 매장별 매출', '직원별 정산', '보유 매장']
 
 function MemberDetail() {
   const [tab, setTab] = useState<number>(0)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const tabSearch = searchParams.get('tab')
+
+  useEffect(() => {
+    setTab(Number(tabSearch))
+  }, [tabSearch])
+  const navigate = useNavigate()
+
+  const handleChangeTab = (newTab: string) => {
+    setSearchParams({ tab: newTab })
+  }
   return (
     <div className='bg-black p-8 h-screen flex flex-col gap-8 overflow-y-scroll'>
-      <div className='w-fit h-8 justify-start items-center gap-3 inline-flex'>
+      <div className='w-fit h-8 justify-start items-center gap-3 inline-flex' onClick={() => navigate(-1)}>
         <div className='w-7 h-7 relative'>
           <ArrowLeftIcon width={28} height={28} />
         </div>
@@ -29,7 +41,7 @@ function MemberDetail() {
                     'w-[150.86px] flex-col justify-center items-center inline-flex',
                     index === tab && 'border-b-2 border-[#2d87ff]'
                   )}
-                  onClick={() => setTab(index)}
+                  onClick={() => handleChangeTab(index.toString())}
                 >
                   <div className='px-1 pb-4 justify-center items-center gap-1 inline-flex'>
                     <div

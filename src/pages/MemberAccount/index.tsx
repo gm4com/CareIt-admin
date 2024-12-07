@@ -1,13 +1,54 @@
-// import AddCycle from '../../assets/Icons/AddCycleIcon'
 import AddCycle from '@/assets/Icons/AddCycleIcon'
-import AddIcon from '../../assets/Icons/AddIcon'
-import SearchIcon from '../../assets/Icons/SearchIcon'
-import UserTable from '../User'
-// import FilterMenu from '../../components/FilterMenu'
-// import AddCycle from '../../assets/Icons/AddCycleIcon'
+import AddIcon from '@/assets/Icons/AddIcon'
+import DeleteIcon from '@/assets/Icons/DeleteIcon'
+import EditIcon from '@/assets/Icons/EditIcon'
+import SearchIcon from '@/assets/Icons/SearchIcon'
+import CustomTable from '@/components/CustomTable'
 import FilterMenu from '@/components/FilterMenu'
+import { ROUTES } from '@/routers/routes'
+import { Member } from '@/types/member'
+import { Input } from '@headlessui/react'
+import { useNavigate } from 'react-router'
 
 const MemberAccount = () => {
+  const navigate = useNavigate()
+  const fetchUserData = async (page: number, itemsPerPage: number) => {
+    // Giả lập gọi API
+    const totalItems = 100 // Tổng số bản ghi giả lập
+    const data = Array.from({ length: itemsPerPage }, (_, i) => ({
+      id: page * itemsPerPage + i + 1,
+      name: `Member ${page * itemsPerPage + i + 1}`,
+      email: `Email ${page * itemsPerPage + i + 1}`,
+      address: `Address ${page * itemsPerPage + i + 1}`,
+      phoneNumber: `PhoneNumber ${page * itemsPerPage + i + 1}`
+    }))
+    return { data, totalItems }
+  }
+
+  const renderUserRow = (member: Member) => (
+    <>
+      <td className='px-6 py-4'>{member.id}</td>
+      <td
+        className='px-6 py-4 cursor-pointer hover:text-blue-500'
+        onClick={() => {
+          navigate(`${ROUTES.MEMBER_DETAIL}/${member.id}`)
+        }}
+      >
+        {member.name}
+      </td>
+      <td className='px-6 py-4'>{member.email}</td>
+      <td className='px-6 py-4'>{member.address}</td>
+      <td className='px-6 py-4'>{member.phoneNumber}</td>
+      <td className='px-6 py-4 flex gap-3'>
+        <button>
+          <EditIcon />
+        </button>
+        <button>
+          <DeleteIcon />
+        </button>
+      </td>
+    </>
+  )
   return (
     <div className='bg-black p-8 h-screen flex flex-col gap-8 overflow-y-scroll'>
       <div className='w-full h-14 pt-[21.50px] bg-[#1a1d1f] rounded-xl justify-center items-center inline-flex'>
@@ -58,7 +99,13 @@ const MemberAccount = () => {
       <div className='h-11 justify-between items-center inline-flex'>
         <div className='justify-start items-center gap-3 flex'>
           <div className='pl-4 pr-3 py-2.5 bg-[#272b30]/70 rounded-xl border-2 border-[#6f767e]/10 justify-start items-center gap-2 flex'>
-            <div className="w-[161px] text-[#6f767e] text-sm font-normal font-['Noto Sans KR'] leading-tight">검색</div>
+            <div className="w-[161px] text-[#6f767e] text-sm font-normal font-['Noto Sans KR'] leading-tight">
+              <Input
+                className='bg-[#272b30]/10 grow shrink basis-0 h-6 justify-start items-center gap-2 flex outline-none'
+                type='text'
+                placeholder='검색'
+              />
+            </div>
             <div className='w-[22px] h-[22px] relative'>
               <SearchIcon />
             </div>
@@ -73,8 +120,14 @@ const MemberAccount = () => {
           </div>
         </div>
       </div>
-
-      <UserTable />
+      <div className='bg-[#1a1d1f] rounded-xl'>
+        <CustomTable
+          fetchData={fetchUserData}
+          columns={['No', '회사이름', '이메일', '주소', '사업자번호', '']}
+          renderRow={renderUserRow}
+          isSelectRow
+        />
+      </div>
     </div>
   )
 }

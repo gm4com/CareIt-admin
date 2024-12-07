@@ -1,8 +1,7 @@
-// import Login from '../pages/login'
-import Login from '../pages/Login'
-import MemberAccount from '../pages/MemberAccount'
-import MemberDetail from '../pages/MemberDetail'
-import NotFoundPage from '../pages/NotFound'
+import Login from '@/pages/Login'
+import MemberAccount from '@/pages/MemberAccount'
+import MemberDetail from '@/pages/MemberDetail'
+import NotFoundPage from '@/pages/NotFound'
 
 export interface RouteConfig {
   path: string
@@ -26,6 +25,6 @@ export const routes: RouteConfig[] = [
   { path: ROUTES.LOGIN, element: <Login />, private: false },
   { path: ROUTES.HOME, element: <>HOme</>, private: true },
   { path: ROUTES.MEMBER_ACCOUNT, element: <MemberAccount />, private: false },
-  { path: ROUTES.MEMBER_DETAIL, element: <MemberDetail />, private: false },
+  { path: `${ROUTES.MEMBER_DETAIL}/:id`, element: <MemberDetail />, private: false },
   { path: ROUTES.NOT_FOUND, element: <NotFoundPage /> } // Trang 404
 ]
