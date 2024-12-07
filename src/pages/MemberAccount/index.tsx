@@ -1,8 +1,11 @@
-import AddCycle from '../../assets/Icons/AddCycleIcon'
+// import AddCycle from '../../assets/Icons/AddCycleIcon'
+import AddCycle from '@/assets/Icons/AddCycleIcon'
 import AddIcon from '../../assets/Icons/AddIcon'
-import FilterIcon from '../../assets/Icons/FilterIcon'
 import SearchIcon from '../../assets/Icons/SearchIcon'
 import UserTable from '../User'
+// import FilterMenu from '../../components/FilterMenu'
+// import AddCycle from '../../assets/Icons/AddCycleIcon'
+import FilterMenu from '@/components/FilterMenu'
 
 const MemberAccount = () => {
   return (
@@ -60,11 +63,8 @@ const MemberAccount = () => {
               <SearchIcon />
             </div>
           </div>
-          <div className='px-3 py-2.5 bg-[#272b30]/70 rounded-xl border-2 border-[#2d87ff] justify-start items-center gap-2 flex'>
-            <div className='w-[22px] h-[22px] relative'>
-              <FilterIcon />
-            </div>
-          </div>
+
+          <FilterMenu />
         </div>
         <div className='pl-4 pr-3 py-2.5 bg-[#2d87ff] rounded-xl justify-start items-center gap-2 flex'>
           <div className="text-white text-sm font-medium font-['Noto Sans KR'] leading-tight">사용자 생성</div>

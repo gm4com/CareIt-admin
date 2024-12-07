@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import ArrowLeftIcon from '@/assets/Icons/ArrowLeftIcon';
+import ArrowRightIcon from '@/assets/Icons/ArrowRightIcon';
 import React, { useState, useEffect } from 'react'
 import ReactPaginate from 'react-paginate'
-import ArrowLeftIcon from '../../assets/Icons/ArrowLeftIcon'
-import ArrowRightIcon from '../../assets/Icons/ArrowRightIcon'
 
 interface TableProps<T> {
   fetchData: (page: number, itemsPerPage: number) => Promise<{ data: T[]; totalItems: number }>
@@ -33,7 +33,7 @@ const CustomTable = <T,>({ fetchData, columns, renderRow, itemsPerPage = 10, onC
   }
 
   return (
-    <div className='overflow-x-auto w-full p-4 rounded-lg shadow-lg'>
+    <div className='w-full p-4 rounded-lg shadow-lg'>
       <table className='w-full text-sm text-left text-gray-400'>
         <thead className='text-sm uppercase dark:text-white text-white font-bold'>
           <tr>
@@ -75,9 +75,10 @@ const CustomTable = <T,>({ fetchData, columns, renderRow, itemsPerPage = 10, onC
             breakLabel={'...'}
             pageCount={totalPages}
             onPageChange={handlePageClick}
-            containerClassName={'flex space-x-2 items-center justify-center w-full'}
-            pageClassName={'w-8 h-8 flex items-center justify-center text-gray-300 hover:bg-gray-600 rounded-full'}
+            containerClassName={'p-2  flex space-x-2 items-center justify-center w-full'}
+            pageClassName={'rounded-full'}
             initialPage={currentPage}
+            pageLinkClassName={'w-8 h-8 flex items-center justify-center hover:bg-gray-600 !rounded-full'} // Style thẻ a
             activeClassName={'bg-gray-700 !text-blue-600'}
             disabledClassName={'text-gray-500 cursor-not-allowed'}
             key={currentPage}

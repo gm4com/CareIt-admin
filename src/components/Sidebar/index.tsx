@@ -12,7 +12,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`${isCollapsed ? 'min-w-20' : 'min-w-[248px]'} transition-all duration-500 ease-in-out h-screen bg-[#1A1D1F] px-4 py-6 flex flex-col gap-10`}
+      className={`${isCollapsed ? 'min-w-20 transition-all duration-500 ease-in-out' : 'min-w-[248px]'} h-screen bg-[#1A1D1F] px-4 py-6 flex flex-col gap-10`}
     >
       <img src={logoImage} alt='logo' className='w-10 h-10' />
 
