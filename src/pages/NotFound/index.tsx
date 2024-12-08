@@ -1,6 +1,6 @@
+import { ROUTES } from '@/routers/routes'
 import React from 'react'
 import { Link } from 'react-router'
-import { ROUTES } from '../../routers/routes'
 
 const NotFoundPage: React.FC = () => {
   return (

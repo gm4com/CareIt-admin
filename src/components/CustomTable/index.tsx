@@ -104,7 +104,7 @@ const CustomTable = <T,>({
           />
           <div
             className='min-w-[100px] h-5 justify-end items-center gap-2 inline-flex cursor-pointer'
-            onClick={() => setCurrentPage(currentPage + 1)}
+            onClick={() => totalPages > currentPage + 1 && setCurrentPage(currentPage + 1)}
           >
             <div className="text-[#efefef] text-sm font-medium font-['Noto Sans KR'] leading-tight">다음</div>
             <div className='w-5 h-5 relative'>

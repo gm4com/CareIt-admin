@@ -3,6 +3,7 @@ import SalesByStore from '@/components/SalesByStore'
 import SettlementByEmployee from '@/components/SettlementByEmployee'
 import StoreDashboard from '@/components/StoreDashboard'
 import StoresOwned from '@/components/StoresOwned'
+import { ROUTES } from '@/routers/routes'
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router'
@@ -24,7 +25,10 @@ function MemberDetail() {
   }
   return (
     <div className='bg-black p-8 h-screen flex flex-col gap-8 overflow-y-scroll'>
-      <div className='w-fit h-8 justify-start items-center gap-3 inline-flex' onClick={() => navigate(-1)}>
+      <div
+        className='w-fit h-8 justify-start items-center gap-3 inline-flex'
+        onClick={() => navigate(ROUTES.MEMBER_ACCOUNT)}
+      >
         <div className='w-7 h-7 relative'>
           <ArrowLeftIcon width={28} height={28} />
         </div>
