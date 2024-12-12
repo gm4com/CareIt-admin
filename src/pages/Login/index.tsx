@@ -9,11 +9,7 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
 
 const Login = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm()
+  const { register, handleSubmit } = useForm()
   const navigate = useNavigate()
   const [enabled, setEnabled] = useState(false)
   const [hidePassword, setHidePassword] = useState(false)

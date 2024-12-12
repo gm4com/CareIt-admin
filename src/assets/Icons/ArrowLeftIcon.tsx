@@ -1,5 +1,3 @@
-import React from 'react'
-
 interface ArrowLeftIconProps {
   width?: number
   height?: number

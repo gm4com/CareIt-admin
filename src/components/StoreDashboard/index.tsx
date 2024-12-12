@@ -5,7 +5,7 @@ import ArrowRightIcon from '@/assets/Icons/ArrowRightIcon'
 import CheveronIcon from '@/assets/Icons/CheveronIcon'
 
 const StoreDashboard = () => {
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [, setSearchParams] = useSearchParams()
   return (
     <div className='flex flex-col gap-3'>
       <div className='w-full h-fit p-5 bg-[#1a1d1f] rounded-xl justify-end items-center inline-flex'>

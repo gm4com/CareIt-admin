@@ -3,10 +3,10 @@ import { Navigate } from 'react-router'
 
 interface PrivateRouteProps {
   children: JSX.Element
-  isAuthenticated: boolean
 }
 
-const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, isAuthenticated }) => {
+const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
+  const isAuthenticated = Boolean(localStorage.getItem('token'))
   return isAuthenticated ? children : <Navigate to='/login' replace />
 }
 
