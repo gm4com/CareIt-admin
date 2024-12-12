@@ -5,6 +5,7 @@ import logoImage from '@/assets/logo.png'
 import ChevronLeftDouble from '@/assets/Icons/ChevronLeftDouble'
 import { Link, useLocation } from 'react-router'
 import { ROUTES } from '@/routers/routes'
+import clsx from 'clsx'
 
 interface SidebarMenuItem {
   title: string
@@ -60,6 +61,7 @@ const Sidebar = () => {
           onClick={() => {
             toggleSidebar()
           }}
+          className={clsx(isCollapsed ? 'rotate-180' : '')}
         >
           <ChevronLeftDouble />
         </button>
